@@ -1,0 +1,2 @@
+/Users/macbookpro/StudioProjects/aros_staff/android/app/.cxx/RelWithDebInfo/3y1a6x5m/x86/CMakeFiles/edit_cache.dir
+/Users/macbookpro/StudioProjects/aros_staff/android/app/.cxx/RelWithDebInfo/3y1a6x5m/x86/CMakeFiles/rebuild_cache.dir
