@@ -1,11 +1,12 @@
-
-
 abstract class Either<L, R> {
   bool get isLeft;
-
   bool get isRight;
-
- Future< void> fold(Function(L l) ifLeft, Function(R r) ifRight);
+  
+  // Qiymatlarni olish uchun yangi metodlar
+  L get leftOrThrow;
+  R get rightOrThrow;
+  
+  Future<void> fold(Function(L l) ifLeft, Function(R r) ifRight);
 }
 
 class FoldRight<L, R> extends Either<L, R> {
@@ -20,7 +21,15 @@ class FoldRight<L, R> extends Either<L, R> {
   bool get isRight => true;
 
   @override
-  Future< void> fold(Function(L l) ifLeft, Function(R r) ifRight) async {return  ifRight(_r);}
+  R get rightOrThrow => _r;
+  
+  @override
+  L get leftOrThrow => throw Exception("Right value doesn't have left");
+
+  @override
+  Future<void> fold(Function(L l) ifLeft, Function(R r) ifRight) async {
+    await ifRight(_r);
+  }
 }
 
 class FoldLeft<L, R> extends Either<L, R> {
@@ -35,5 +44,13 @@ class FoldLeft<L, R> extends Either<L, R> {
   bool get isRight => false;
 
   @override
-  Future<void> fold(Function(L l) ifLeft, Function(R r) ifRight)  async{ return ifLeft(_l);}
+  L get leftOrThrow => _l;
+  
+  @override
+  R get rightOrThrow => throw Exception("Left value doesn't have right");
+
+  @override
+  Future<void> fold(Function(L l) ifLeft, Function(R r) ifRight) async {
+    await ifLeft(_l);
+  }
 }

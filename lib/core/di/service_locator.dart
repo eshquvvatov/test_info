@@ -109,5 +109,5 @@ Future<void> initializeDependencies() async {
 // Support
   sl.registerLazySingleton<SupportRemoteDataSource>(() => SupportRemoteDataSourceImpl(sl<DioClient>()));
   sl.registerLazySingleton<SupportRepository>(() => SupportRepositoryImpl(remoteDataSource: sl()));
-  sl.registerLazySingleton(() => GetSupportInfo(sl()));
+  sl.registerLazySingleton(() => GetSupportInfo(sl(),sl()));
 }
