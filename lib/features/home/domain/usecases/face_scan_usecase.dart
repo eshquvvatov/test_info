@@ -2,16 +2,15 @@ import 'dart:io';
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/face_scan_entity.dart';
 import '../repositories/home_repository.dart';
 
 class FaceScanUseCase implements UseCase<Either<Failure, FaceScanEntity>, FaceScanParams> {
   final HomeRepository _repository;
-  final NetworkInfo _networkInfo = sl<NetworkInfo>();
+  final NetworkInfo _networkInfo ;
 
-  FaceScanUseCase(this._repository);
+  FaceScanUseCase(this._repository,this._networkInfo);
 
   @override
   Future<Either<Failure, FaceScanEntity>> call({required FaceScanParams params}) async {

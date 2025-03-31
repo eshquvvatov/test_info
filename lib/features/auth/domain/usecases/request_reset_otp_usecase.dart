@@ -2,16 +2,15 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/reset_otp_entity.dart';
 import '../repositories/auth_repository.dart';
 
 class ResetOtpUseCase implements UseCase<Either<Failure, ResetOtpEntity>, ResetOtpParams> {
   final AuthRepository _loginStarRepository;
-  final NetworkInfo _connectivity = sl<NetworkInfo>();
+  final NetworkInfo _connectivity ;
 
-  ResetOtpUseCase(this._loginStarRepository);
+  ResetOtpUseCase(this._loginStarRepository,this._connectivity);
 
   @override
   Future<Either<Failure, ResetOtpEntity>> call({required ResetOtpParams params}) async {

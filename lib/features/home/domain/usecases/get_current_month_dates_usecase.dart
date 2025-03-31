@@ -2,7 +2,6 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/month_date_entity.dart';
 import '../repositories/home_repository.dart';
@@ -10,9 +9,9 @@ import '../repositories/home_repository.dart';
 class GetCurrentMonthDatesUseCase
     implements UseCase<Either<Failure, List<MonthDateEntity>>, Null> {
   final HomeRepository _repository;
-  final NetworkInfo _networkInfo = sl<NetworkInfo>();
+  final NetworkInfo _networkInfo ;
 
-  GetCurrentMonthDatesUseCase(this._repository);
+  GetCurrentMonthDatesUseCase(this._repository,this._networkInfo);
 
   @override
   Future<Either<Failure, List<MonthDateEntity>>> call({ Null params}) async {

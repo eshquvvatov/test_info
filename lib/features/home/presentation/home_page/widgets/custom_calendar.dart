@@ -164,9 +164,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
     return weekdays[date.weekday % 7];
   }
 
-  bool _isSameDate(String a, String b) {
-    return a==b;
-  }
+
 
   @override
   void dispose() {

@@ -2,7 +2,6 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/old_login_entity.dart';
 import '../repositories/auth_repository.dart';
@@ -11,8 +10,8 @@ import '../repositories/auth_repository.dart';
 
 class OldLoginUseCase implements UseCase<Either<Failure, OldLoginEntity>, OldLoginParams> {
   final AuthRepository _loginStarRepository;
-  OldLoginUseCase(this._loginStarRepository);
-  final  NetworkInfo _connectivity = sl<NetworkInfo>();
+  OldLoginUseCase(this._loginStarRepository,this._connectivity);
+  final  NetworkInfo _connectivity ;
 
   @override
   Future<Either<Failure, OldLoginEntity>> call({required OldLoginParams params}) async{

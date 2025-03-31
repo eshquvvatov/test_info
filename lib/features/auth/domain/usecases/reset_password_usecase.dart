@@ -2,16 +2,15 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/reset_password_entity.dart';
 import '../repositories/auth_repository.dart';
 
 class ResetNewPasswordUseCase implements UseCase<Either<Failure, ResetPasswordEntity>, ResetNewPasswordParams> {
   final AuthRepository _loginStarRepository;
-  final NetworkInfo _connectivity = sl<NetworkInfo>();
+  final NetworkInfo _connectivity ;
 
-  ResetNewPasswordUseCase(this._loginStarRepository);
+  ResetNewPasswordUseCase(this._loginStarRepository,this._connectivity);
 
   @override
   Future<Either<Failure, ResetPasswordEntity>> call({required ResetNewPasswordParams params}) async {

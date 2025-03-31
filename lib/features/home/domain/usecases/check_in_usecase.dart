@@ -1,16 +1,15 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/check_in_entity.dart';
 import '../repositories/home_repository.dart';
 
 class CheckInUseCase implements UseCase<Either<Failure, CheckInEntity>, CheckInParams> {
   final HomeRepository _repository;
-  final NetworkInfo _networkInfo = sl<NetworkInfo>();
+  final NetworkInfo _networkInfo;
 
-  CheckInUseCase(this._repository);
+  CheckInUseCase(this._repository,this._networkInfo);
 
   @override
   Future<Either<Failure, CheckInEntity>> call({required CheckInParams params}) async {

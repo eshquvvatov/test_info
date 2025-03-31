@@ -1,7 +1,6 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/attendance_detail_entity.dart';
 import '../repositories/home_repository.dart';
@@ -9,9 +8,9 @@ import '../repositories/home_repository.dart';
 class GetAttendanceDetailUseCase
     implements UseCase<Either<Failure, AttendanceDetailEntity>, GetAttendanceDetailParams> {
   final HomeRepository _repository;
-  final NetworkInfo _networkInfo = sl<NetworkInfo>();
+  final NetworkInfo _networkInfo;
 
-  GetAttendanceDetailUseCase(this._repository);
+  GetAttendanceDetailUseCase(this._repository,this._networkInfo);
 
   @override
   Future<Either<Failure, AttendanceDetailEntity>> call(

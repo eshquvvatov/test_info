@@ -63,13 +63,13 @@ Future<void> initializeDependencies() async {
   // Auth useCase
   // sl.registerLazySingleton<CheckOtpUseCase>(() => CheckOtpUseCase(sl<AuthRepository>()));
 
-  sl.registerLazySingleton<OldLoginUseCase>(() => OldLoginUseCase(sl<AuthRepository>()));
+  sl.registerLazySingleton<OldLoginUseCase>(() => OldLoginUseCase(sl<AuthRepository>(),sl()));
 
-  sl.registerLazySingleton<ResetCheckOtpUseCase>(() => ResetCheckOtpUseCase(sl<AuthRepository>()));
+  sl.registerLazySingleton<ResetCheckOtpUseCase>(() => ResetCheckOtpUseCase(sl<AuthRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<ResetOtpUseCase>(() => ResetOtpUseCase(sl<AuthRepository>()));
+  sl.registerLazySingleton<ResetOtpUseCase>(() => ResetOtpUseCase(sl<AuthRepository>(), sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<ResetNewPasswordUseCase>(() => ResetNewPasswordUseCase(sl<AuthRepository>()));
+  sl.registerLazySingleton<ResetNewPasswordUseCase>(() => ResetNewPasswordUseCase(sl<AuthRepository>(),sl<NetworkInfo>()));
 
   // sl.registerLazySingleton<SignInUseCase>(() => SignInUseCase(sl<AuthRepository>()));
 
@@ -86,19 +86,19 @@ Future<void> initializeDependencies() async {
 
 
   // Home Use Cases
-  sl.registerLazySingleton<GetCurrentMonthDatesUseCase>(() => GetCurrentMonthDatesUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<GetCurrentMonthDatesUseCase>(() => GetCurrentMonthDatesUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<GetAttendanceDetailUseCase>(() => GetAttendanceDetailUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<GetAttendanceDetailUseCase>(() => GetAttendanceDetailUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<CheckInUseCase>(() => CheckInUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<CheckInUseCase>(() => CheckInUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<CheckOutUseCase>(() => CheckOutUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<CheckOutUseCase>(() => CheckOutUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<FaceScanUseCase>(() => FaceScanUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<FaceScanUseCase>(() => FaceScanUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<CheckStateUseCase>(() => CheckStateUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<CheckStateUseCase>(() => CheckStateUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
-  sl.registerLazySingleton<GetAttendanceInfoUseCase>(() => GetAttendanceInfoUseCase(sl<HomeRepository>()));
+  sl.registerLazySingleton<GetAttendanceInfoUseCase>(() => GetAttendanceInfoUseCase(sl<HomeRepository>(),sl<NetworkInfo>()));
 
 
 

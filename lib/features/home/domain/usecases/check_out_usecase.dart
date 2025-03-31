@@ -1,16 +1,15 @@
 import '../../../../core/error/failer.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/resources/data_state.dart';
-import '../../../../core/di/service_locator.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/check_out_entity.dart';
 import '../repositories/home_repository.dart';
 
 class CheckOutUseCase implements UseCase<Either<Failure, CheckOutEntity>, CheckOutParams> {
   final HomeRepository _repository;
-  final NetworkInfo _networkInfo = sl<NetworkInfo>();
+  final NetworkInfo _networkInfo ;
 
-  CheckOutUseCase(this._repository);
+  CheckOutUseCase(this._repository,this._networkInfo);
 
   @override
   Future<Either<Failure, CheckOutEntity>> call({required CheckOutParams params}) async {
